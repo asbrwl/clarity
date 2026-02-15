@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en" }}" class="light" data-search-cache-version="{{ now.Unix }}">
+
+{{ partial "head/head.html" . }}
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    {{ partial "header.html" . }}
+    <main id="main-content">
+        {{ block "main" . }}{{ end }}
+    </main>
+    {{ partialCached "footer/footer" . | safeHTML }}
+    {{ partialCached "footer/scripts" . | safeHTML }}
+    {{if eq .Params.layout "search" }}
+    {{ partialCached "footer/search-js" . | safeHTML }}
+    {{end}}
+</body>
+
+</html>

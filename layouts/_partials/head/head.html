@@ -1,0 +1,53 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>{{ .Params.Title }} {{ with.Params.subtitle }}- {{ .}} {{end}} - {{ .Site.Title }}</title>
+  <meta name="description"
+    content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
+
+  <!--SEO-->
+  <link rel="canonical" href="{{ .Permalink }}" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="{{ "/img/icons/favicon.ico" | relURL }}" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ "/img/icons/favicon-32x32.png" | relURL }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ "/img/icons/favicon-16x16.png" | relURL }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ "/img/icons/apple-icon-180x180.png" | relURL }}">
+  <link rel="icon" type="image/png" sizes="192x192" href="{{ "/img/icons/android-icon-192x192.png" | relURL }}">
+  <link rel="manifest" href="{{ "/img/icons/manifest.json" | relURL }}">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="{{ "/img/icons/ms-icon-144x144.png" | relURL }}">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Social -->
+  <meta name="author" content="{{ .Site.Params.author }}">
+  <meta name="image" property="og:image"
+    content="{{ .Site.BaseURL }}{{ with .Params.featured_image }}{{ . }}{{ else }}{{ .Site.Params.ogimg }}{{end}}">
+
+  <meta property="og:site_name" content="{{.Site.Title}}" />
+  <meta property="og:title" content="{{ .Params.Title }} {{ with.Params.subtitle }}- {{ .}} | {{end}}{{.Site.Title}}" />
+  <meta property="og:image"
+    content="{{ .Site.BaseURL }}{{ with .Params.featured_image }}{{ . }}{{ else }}{{ .Site.Params.ogimg }}{{end}}" />
+  <meta property="og:description"
+    content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
+  <meta itemprop="name" content="{{with.Title}}{{.}} | {{end}}{{.Site.Title}}" />
+  <meta name="twitter:title"
+    content="{{ .Params.Title }} {{ with.Params.subtitle }}- {{ .}} | {{end}}{{.Site.Title}}" />
+  <meta name="application-name" content="{{with.Title}}{{.}} | {{end}}{{.Site.Title}}" />
+  <meta name="twitter:description"
+    content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
+
+  {{ partial "post-meta.html" . }}
+
+  {{ partial "head/custom.html" . }}
+
+  {{ partial "analytics.html" . }}
+
+
+
+  {{ $style := resources.Get "sass/main.scss" | toCSS | minify | fingerprint "sha512" }}
+  <link rel="preload" href="{{ $style.RelPermalink }}" as="style">
+  <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
+  <meta property="commit_id" content="{{ with .GitInfo }}{{ .AbbreviatedHash }}{{ end }}" />
+</head>

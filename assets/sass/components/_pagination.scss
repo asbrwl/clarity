@@ -1,0 +1,45 @@
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--light-border-color);
+    font-family: var(--article-font-family);
+
+    // Generic list pagination (list.html)
+    .prev-page, .next-page {
+        flex-grow: 1;
+        flex-shrink: 1;
+        display: flex;
+    }
+
+    .next-page {
+        justify-content: flex-end;
+    }
+
+    // Post list pagination (posts.html)
+    .pagination-info {
+        color: var(--light-font-color);
+        font-size: 0.95rem;
+    }
+
+    .pagination-prev,
+    .pagination-next {
+        font-weight: 500;
+    }
+
+    a {
+        border-radius: 0.35rem;
+        padding: 0.5rem 1rem;
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: var(--font-color);
+        text-decoration: none;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background-color: var(--toc-hover-bg-color);
+        }
+    }
+}

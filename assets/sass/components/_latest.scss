@@ -1,0 +1,88 @@
+/* Home Sections Grid */
+
+.home-sections-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+
+    section {
+        margin-top: 0;
+    }
+}
+
+@media screen and (min-width: $breakpoint-mobile) {
+    .home-sections-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+    }
+}
+
+/* Podcast Subscription Links */
+
+.podcast-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 3rem;
+    flex-wrap: nowrap;
+    align-items: baseline;
+
+    .podcast-label {
+        font-size: 1rem;
+        color: var(--font-color);
+        font-weight: 400;
+        white-space: nowrap;
+    }
+
+    .read-more-link {
+        display: inline-block;
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--heading-color);
+        text-decoration: none;
+        border-bottom: 2px solid var(--heading-color);
+        padding-bottom: 2px;
+        transition: opacity 0.2s ease;
+        white-space: nowrap;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}
+
+/* Home Section Headers */
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    /* Very subtle separator */
+    padding-bottom: 0.5rem;
+
+    h2 {
+        font-family: var(--header-font-family);
+        /* Newsreader */
+        font-size: 2.2rem;
+        margin: 0;
+        font-weight: 500;
+        /* Regular/Medium */
+        color: var(--heading-color);
+    }
+
+    .section-link {
+        display: inline-block;
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--heading-color);
+        text-decoration: none;
+        border-bottom: 2px solid var(--heading-color);
+        padding-bottom: 2px;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}

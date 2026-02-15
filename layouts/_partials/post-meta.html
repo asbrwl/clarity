@@ -1,0 +1,44 @@
+{{ if eq .Section "posts" }}
+
+<meta property="og:type" content="article" />
+<meta property="article:publisher" content="{{ .Site.Params.author }}" />
+<meta property="og:article:published_time" content={{ .Date.Format "2006-01-02T15:04:05Z0700" | safeHTML }} />
+<meta property="article:published_time" content={{ .Date.Format "2006-01-02T15:04:05Z0700" | safeHTML }} />
+<meta property="og:image" content="{{ .Params.featured_image | absURL }}"/>
+
+{{ with.Params.author }}
+  <meta property="og:article:author" content="{{humanize . }}" />
+  <meta property="article:author" content="{{humanize . }}" />
+  <meta name="author" content="{{humanize . }}" />
+{{ end }}
+
+<script defer type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "{{ .Title }}",
+    "image": {
+    	"@type": "imageObject",
+    	"url": "{{ .Params.featured_image | absURL }}"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "{{ .Site.Params.author }}",
+      "url": "{{ .Site.BaseURL }}"
+    },
+    "datePublished": "{{ .Date.Format "2006-01-02" }}",
+    "description": "{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}",
+    "wordCount": {{ .WordCount }},
+    "mainEntityOfPage": "True",
+    "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
+    "publisher": {
+      "@type": "Organization",
+      "name": "{{ .Site.Params.author }}",
+      "logo": {
+        "@type": "imageObject",
+        "url": "{{ .Site.Params.logo | absURL }}"
+      }
+    }
+  }
+</script>
+{{ end }}

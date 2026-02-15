@@ -1,0 +1,29 @@
+{{ define "main" }}
+  <div class="container">
+  	<article>
+	<header class="article-header">
+    	<h1>{{ .Title }}</h1>
+	</header>
+	<!-- Fuse Form -->
+	<section>
+	  <div>
+	    <form action="{{ "search" | absURL }}">
+	      <label for="search-query" class="sr-only">Search query</label>
+	      <input id="search-query" name="s" placeholder="Please enter a word or phrase to search"/>
+	      <button type="submit">Search</button>
+	    </form>
+	    <div id="search-results" class="article-post">
+	     <hr>
+	    </div>
+	  </div>
+	</section>
+	<!-- Search results styling -->
+	<script id="search-result-template" type="text/x-js-template">
+	    <div id="summary-${key}" class="article-post">
+	      <h5><a href="${link}">${title}</a></h5>
+	      <p>${snippet}</p>
+	    </div>
+	</script>
+	</article>
+	</div>
+{{ end }}

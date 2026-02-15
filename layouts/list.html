@@ -1,0 +1,60 @@
+{{ define "main" }}
+
+{{ $pages := .Pages }}
+{{ $pages = (.Paginate $pages).Pages }}
+{{ $pagecounter := len $pages }}
+
+<header>
+  <div class="container">
+    <h1>Content tagged with {{ .Title }}</h1>
+    <p class="subtitle">
+      {{if eq $pagecounter 1}} {{ len .Pages }} post found
+      {{else}}
+      {{ len .Pages }} posts found.
+      {{end}}
+    </p>
+  </div>
+</header>
+
+  <div class="container">
+    <section>
+        <div class="posts">
+          {{ range $pages }}
+          <div class="post">
+            <a href="{{ .RelPermalink }}">
+              <div class="post-row">
+                <time>{{ .Date.Format "02 Jan 06" }}&nbsp; &nbsp;</time>
+                <h3>{{ .Title }}</h3>
+              </div>
+              <!--<div class="new-post">New!</div>-->
+            </a>
+          </div>
+          {{ end }}
+        </div>
+    </section>
+  </div>
+
+{{- $scope := .Site }}
+{{- $paginator := .Paginate (where $scope.RegularPages ".Params.type" "!=" "page") }}
+
+{{- if gt $paginator.TotalPages 1}}
+
+<section>
+  <div class="container">
+    <nav class="pagination">
+      {{- if $paginator.HasPrev}}
+      <div class="prev-page">
+        <a href="{{ $paginator.Prev.URL }}">Previous Page</a>
+      </div>
+      {{ end }}
+      {{- if $paginator.HasNext}}
+      <div class="next-page">
+        <a href="{{ $paginator.Next.URL }}">Next Page</a>
+      </div>
+      {{ end }}
+    </nav>
+  </div>
+</section>
+{{ end }}
+
+{{ end }}

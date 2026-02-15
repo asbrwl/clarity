@@ -1,0 +1,23 @@
+{{ define "main" }}
+
+<header>
+    <div class="container">
+        <h1>{{ .Title }}</h1>
+    </div>
+</header>
+
+<section>
+    <div class="container">
+        <div class="terms">
+            {{ range (index .Site.Taxonomies (.Title | lower)) }} {{ $count := 0
+            }} {{ range .Pages }} {{ if ne .Params.type "recipe" }} {{ $count =
+            add $count 1 }} {{ end }} {{ end }} {{ if gt $count 0 }}
+            <a href="{{ .Page.RelPermalink }}"
+                >#{{ .Page.Title }} ({{ $count }})</a
+            >
+            {{ end }} {{ end }}
+        </div>
+    </div>
+</section>
+
+{{ end }}

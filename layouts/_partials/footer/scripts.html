@@ -1,0 +1,11 @@
+{{ $js := resources.Get "js/global.js" | resources.Minify |
+resources.Fingerprint "sha512" }}
+<link rel="preload" href="{{ $js.Permalink }}" as="script" />
+{{ if hugo.IsProduction }}
+<script
+    src="{{ $js.Permalink }}"
+    integrity="{{ $js.Data.Integrity }}"
+></script>
+{{ else }}
+<script src="{{ $js.Permalink }}"></script>
+{{ end }}

@@ -1,0 +1,39 @@
+{{ define "main" }}
+
+<header>
+    <div class="container">
+        <h1>{{ .Title }}</h1>
+        <p class="subtitle">{{ safeHTML .Params.subtitle }}</p>
+        </br>
+        {{ .Content }}
+    </div>
+</header>
+
+{{ $pages := where .Site.RegularPages "Type" "recipes" }}
+
+<section>
+    <div class="container">
+        <section>
+            {{ range $pages.GroupByDate "2006" }}
+            <section>
+                <h2>{{ .Key }}</h2>
+                <div class="posts">
+                    {{ range .Pages }}
+                    <div class="post">
+                        <a href="{{ .RelPermalink }}">
+                            <div class="post-row">
+                                <time>{{ .Date.Format "02 Jan 06" }}&nbsp; &nbsp;</time>
+                                <h3>{{ .Title }}</h3>
+                            </div>
+                            <!--<div class="new-post">New!</div>-->
+                        </a>
+                    </div>
+                    {{ end }}
+                </div>
+            </section>
+            {{ end }}
+        </section>
+    </div>
+</section>
+
+{{ end }}

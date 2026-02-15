@@ -1,0 +1,105 @@
+/* Posts */
+
+.post-row {
+    display: flex; /* Use Flexbox */
+    align-items: center;
+    width: 100%; /* sets the width of the container */
+    flex-wrap: wrap; /* allow items to wrap to the next line */
+
+    time {
+        display: block;
+        flex: 0 0 $date-column-width-mobile;
+        padding-top: 3.5px;
+        width: 20%;
+    }
+
+    h3 {
+        display: block;
+        flex: 1;
+        width: 80%;
+    }
+
+    p {
+        display: block;
+        font-family: var(--article-font-family);
+        font-size: 1rem;
+        color: var(--font-color);
+        padding-top: 5px;
+        width: 100%;
+    }
+}
+
+.posts .post:last-of-type a {
+    border-bottom-width: 0;
+}
+
+.post {
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 1rem 0;
+    }
+
+    h3 {
+        margin-top: 0.1rem;
+        margin-bottom: 0;
+        font-size: 1.1rem;
+        font-weight: 400;
+        font-family: var(--article-font-family);
+
+        .podcast-icon {
+            height: 1.5rem;
+            width: 1.5rem;
+            display: inline-block;
+            margin-left: 0.3rem;
+            vertical-align: text-bottom;
+            position: relative;
+            top: 0.2rem;
+            opacity: 0.6;
+            content: var(--volume-icon-url);
+        }
+    }
+}
+
+.dcap {
+    float: left;
+    line-height: 85%;
+    width: 0.65em;
+    font-size: 400%;
+}
+
+figcaption {
+    font-size: 0.85rem;
+}
+
+@media screen and (min-width: $breakpoint-mobile) {
+    .posts {
+        margin-left: -1rem;
+        margin-right: -1rem;
+    }
+
+    .post {
+        a {
+            padding: 0.75rem 1rem;
+            border-bottom-color: transparent;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-family: var(--article-font-family);
+            font-weight: 400;
+
+            .podcast-icon {
+                height: 1.8rem;
+                width: 1.8rem;
+            }
+        }
+    }
+
+    .post-row time {
+        flex: 0 0 $date-column-width-desktop;
+        font-family: var(--article-font-family);
+        padding-top: 3px;
+    }
+}

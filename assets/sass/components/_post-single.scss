@@ -1,0 +1,347 @@
+/* Post */
+
+// Featured image
+.article-featured-image {
+    width: 100%;
+    margin-bottom: 2rem;
+
+    img {
+        width: 100%;
+        height: auto;
+        max-height: 60vh;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+}
+
+header {
+    padding: 1.5rem 0;
+
+    h1 {
+        font-size: 2.2rem;
+        display: inline-block;
+        font-weight: 500;
+        margin-top: 1rem;
+    }
+
+    u {
+        display: inline-block;
+        text-decoration: none;
+        padding: 0.4rem 0;
+    }
+}
+
+.article-header {
+    padding-top: 1rem;
+    margin-bottom: 0.5rem;
+
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .thumb {
+        display: flex;
+        flex-direction: column;
+    }
+
+    h1 {
+        font-weight: 800;
+        font-size: 1.8rem;
+        margin: 0;
+        letter-spacing: 1px;
+    }
+
+    .description {
+        font-size: 1.2rem;
+        color: var(--light-font-color);
+        font-weight: 400;
+        margin-top: 2rem;
+        margin-bottom: 0;
+    }
+
+    .subtitle {
+        font-size: 1.3rem;
+        color: var(--font-color);
+        margin: 0;
+        margin-top: 0.5rem;
+    }
+}
+
+.post-meta {
+    margin-top: 1rem;
+    padding: 0;
+    color: var(--light-font-color);
+    font-size: 0.9rem;
+    font-family: var(--article-font-family);
+
+    a {
+        color: var(--font-color);
+        border-width: 0;
+    }
+
+    time {
+        margin-top: 0.2rem;
+        font-size: 0.9rem;
+    }
+
+    .tags {
+        margin-top: 0.5rem;
+
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
+// Base styles (mobile-first)
+.article-post {
+    margin-bottom: 3rem;
+    font-family: var(--article-font-family);
+
+    p,
+    ul,
+    ol,
+    dl,
+    table,
+    blockquote {
+        font-size: 1.2rem;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        padding-top: 1rem;
+        font-family: var(--header-font-family);
+    }
+
+    // Drop cap for first paragraph
+    > p:first-of-type::first-letter {
+        float: left;
+        font-size: 4.5rem;
+        line-height: 0.85;
+        font-weight: 800;
+        margin-right: 0.1em;
+        margin-top: 0.1em;
+        font-family: var(--header-font-family);
+    }
+
+    img {
+        border-radius: 5px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    hr {
+        border: none;
+        padding-bottom: 2rem;
+    }
+
+    hr::before {
+        content: "\2022  \2022  \2022";
+        display: block;
+        text-align: center;
+    }
+
+    a {
+        box-shadow: 0px -2px 0px rgba(189, 195, 199, 0.5) inset;
+        transition: all 0.3s ease;
+    }
+
+    code {
+        overflow-x: auto;
+    }
+
+    @for $i from 1 through 6 {
+        h#{$i} {
+            .anchor {
+                stroke: var(--link-color);
+                stroke-width: 1px;
+                fill: var(--link-color);
+                font-weight: 800;
+                left: -0.25rem;
+                border-width: 0;
+                float: left;
+                line-height: 1;
+                margin-left: -20px;
+                padding-right: 4px;
+                box-shadow: none;
+                transition: none;
+                font-family: var(--header-font-family);
+
+                .icon {
+                    visibility: hidden;
+                }
+            }
+        }
+    }
+}
+
+.post-thumbnail {
+    display: block;
+}
+
+// Desktop styles
+@media screen and (min-width: $breakpoint-mobile) {
+    .article-post h2 {
+        font-size: 1.5rem;
+    }
+
+    header h1 {
+        font-size: 2.2rem;
+        margin-top: 2rem;
+    }
+
+    header u {
+        background: linear-gradient(transparent 85%, #bac8ff 0);
+    }
+
+    .article-header {
+        padding-top: 1rem;
+
+        h1 {
+            padding-top: 0;
+            font-size: 2.2rem;
+            font-weight: 500;
+        }
+
+        .thumb {
+            flex-direction: row;
+        }
+
+        .description {
+            font-size: 1.8rem;
+            line-height: 1.5;
+        }
+    }
+}
+
+// Wide screen adjustments
+@media screen and (min-width: $breakpoint-wide) {
+    .article-header h1 {
+        font-size: 2.2rem;
+        font-weight: 500;
+    }
+}
+
+.podcast-intro {
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.audio-box {
+    margin: 3rem auto;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    padding-right: 1.5rem;
+    box-sizing: border-box;
+
+    .audio-cover {
+        flex-shrink: 0;
+
+        img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 5px;
+            display: block;
+        }
+    }
+
+    .audio-content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .audio-title {
+        font-weight: 800;
+        display: block;
+    }
+
+    audio {
+        width: 100%;
+    }
+}
+
+// Table of Contents Accordion
+.toc-accordion {
+    margin: 2rem 0;
+    border: 1px solid var(--light-border-color);
+    border-radius: 6px;
+    background-color: var(--toc-bg-color);
+    overflow: hidden;
+
+    .toc-toggle {
+        cursor: pointer;
+        padding: 1rem 1.25rem;
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: var(--font-color);
+        list-style: none;
+        user-select: none;
+        display: flex;
+        align-items: center;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background-color: var(--toc-hover-bg-color);
+        }
+
+        &::-webkit-details-marker {
+            display: none;
+        }
+
+        &::before {
+            content: "▼";
+            margin-right: 0.75rem;
+            font-size: 0.8rem;
+            transition: transform 0.2s ease;
+            display: inline-block;
+            flex-shrink: 0;
+            position: relative;
+            top: -0.1rem;
+        }
+    }
+
+    &:not([open]) .toc-toggle::before {
+        transform: rotate(-90deg);
+    }
+
+    .toc-content {
+        padding: 0 1.25rem 1rem 1.25rem;
+
+        nav {
+            margin: 0;
+        }
+
+        ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin: 0.4rem 0;
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            box-shadow: none;
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: var(--link-hover-color, var(--link-color));
+                text-decoration: underline;
+            }
+        }
+    }
+}

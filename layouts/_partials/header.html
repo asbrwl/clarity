@@ -1,0 +1,25 @@
+
+
+<nav class="navbar">
+    <div class="container">
+        <div class="flex">
+                        <div>
+                <a class="brand" href="{{ relURL "/" }}" title="{{ .Site.Title }}">
+                    <span class="logo" role="img" aria-label="{{ with .Site.Params.logo_alt }}{{ . }}{{ else }}{{ .Site.Title }} logo{{ end }}"></span>
+                    <span class="stacked-name">
+                        <span class="name-line">{{ with .Site.Params.brand_line1 }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}</span>
+                        {{ with .Site.Params.brand_line2 }}<span class="name-line">{{ . }}</span>{{ end }}
+                    </span>
+                    </a>
+            </div>
+            <div class="flex">
+                {{ range .Site.Menus.header }}
+                <a href="{{ .URL | relURL }}"{{ if eq .URL $.RelPermalink }} aria-current="page"{{ end }}>{{ .Pre }}{{ .Name }}{{ .Post }}</a>
+                {{ end }}
+                <a href="/search/" class="search-icon" aria-label="Search"></a>
+            </div>
+
+        </div>
+    <hr>
+    </div>
+</nav>

@@ -1,0 +1,98 @@
+/* Footer */
+
+.footer {
+    padding: 1rem 0;
+
+    .flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    button {
+        margin: 1px;
+    }
+
+    a {
+        border-radius: 0.35rem;
+        font-weight: 400;
+        font-size: 1rem;
+        border: 1px solid transparent;
+        margin-right: 1em;
+        color: var(--dark-font-color);
+
+        &.img {
+            padding: 0;
+            margin: 0 0.75rem;
+            background: none;
+        }
+    }
+
+    a:hover {
+        text-decoration: underline;
+        text-underline-position: under;
+    }
+
+    .footer-links {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .footer-color-changer {
+        display: flex;
+        justify-content: flex-end;
+        color: var(--light-font-color);
+    }
+
+    .footer-copy {
+        display: flex;
+        justify-content: flex-start;
+        color: var(--light-font-color);
+        font-size: 0.85rem;
+    }
+}
+
+.theme-button {
+    width: 3em;
+    height: 3em;
+    padding: 0.5em;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    justify-content: flex-end;
+
+    &:focus-visible {
+        outline: 2px solid var(--link-color);
+        outline-offset: 2px;
+    }
+
+    &:hover {
+        background-color: var(--light-background);
+    }
+}
+
+.theme-button img {
+    height: 70%;
+    width: 70%;
+    object-fit: cover;
+}
+
+.theme-button.light {
+    display: none;
+}
+
+.dark .theme-button.dark {
+    display: none;
+}
+
+.dark .theme-button.light {
+    display: block;
+}
+
+@media print {
+    .footer {
+        display: none;
+    }
+}

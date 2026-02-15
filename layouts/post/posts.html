@@ -1,0 +1,48 @@
+{{ define "main" }}
+
+<header>
+    <div class="container">
+        <h1>{{ .Title }}</h1>
+        <p class="subtitle">{{ safeHTML .Params.subtitle }}</p>
+        </br>
+        {{ .Content }}
+    </div>
+</header>
+
+{{ $pages := where .Site.RegularPages "Section" "in" .Site.Params.mainSections }}
+{{ $paginator := .Paginate $pages }}
+
+<section>
+    <div class="container">
+        <section>
+            <div class="posts">
+                {{ range $paginator.Pages }}
+                <div class="post">
+                    <a href="{{ .RelPermalink }}">
+                        <div class="post-row">
+                            <time>{{ .Date.Format "02 Jan 06" }}&nbsp; &nbsp;</time>
+                            <h3>{{ .Title }}</h3>
+                        </div>
+                    </a>
+                </div>
+                {{ end }}
+            </div>
+        </section>
+
+        {{ if gt $paginator.TotalPages 1 }}
+        <nav class="pagination">
+            {{ if $paginator.HasPrev }}
+            <a href="{{ $paginator.Prev.URL }}" class="pagination-prev">&larr; Newer</a>
+            {{ end }}
+
+            <span class="pagination-info">Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}</span>
+
+            {{ if $paginator.HasNext }}
+            <a href="{{ $paginator.Next.URL }}" class="pagination-next">Older &rarr;</a>
+            {{ end }}
+        </nav>
+        {{ end }}
+    </div>
+</section>
+
+{{ end }}

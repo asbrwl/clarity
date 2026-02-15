@@ -1,0 +1,9 @@
+// Breakpoint variables
+// Use these consistently across all component files
+
+$breakpoint-mobile: 800px;   // Primary: mobile to desktop switch
+$breakpoint-wide: 1100px;    // Secondary: for wide screen adjustments
+
+// Spacing variables
+$date-column-width-mobile: 65px;   // Width for date/time column on mobile
+$date-column-width-desktop: 80px;  // Width for date/time column on desktop

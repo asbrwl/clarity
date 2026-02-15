@@ -1,0 +1,26 @@
+{{ define "main" }}
+
+<header>
+    <div class="container">
+        <h1>{{ .Title }}</h1>
+    </div>
+</header>
+
+<section>
+    <div class="container">
+        <div class="terms">
+            {{ $tagCounts := slice }} {{ range (index .Site.Taxonomies (.Title |
+            lower)) }} {{ $count := 0 }} {{ range .Pages }} {{ if and (ne
+            .Params.type "recipe") (ne .Section "recipes") }} {{ $count = add
+            $count 1 }} {{ end }} {{ end }} {{ if gt $count 0 }} {{ $tagCounts =
+            $tagCounts | append (dict "page" .Page "count" $count) }} {{ end }}
+            {{ end }} {{ range sort $tagCounts "count" "desc" }}
+            <a href="{{ .page.RelPermalink }}" style="white-space: nowrap"
+                >#{{ .page.Title }}&nbsp;({{ .count }})</a
+            >
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+{{ end }}

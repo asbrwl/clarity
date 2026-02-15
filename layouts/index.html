@@ -1,0 +1,33 @@
+{{ define "main" }} {{ partial "home-me.html" . }}
+
+{{ $pages := where .Site.RegularPages "Section" "in" .Site.Params.mainSections }}
+
+<div class="container">
+    <div class="home-sections-grid">
+        <section>
+            <div class="section-header">
+                <h2>Latest</h2>
+                {{ with index .Site.Params.mainSections 0 }}
+                <a class="section-link" href="/{{ . }}/">View Archive</a>
+                {{ end }}
+            </div>
+            <div class="posts">
+                {{ range first 10 $pages }}
+                <div class="post">
+                    <a href="{{ .RelPermalink }}">
+                        <div class="post-row">
+                            <time
+                                >{{ .Date.Format "02 Jan 06" }} &nbsp;
+                                &nbsp;</time
+                            >
+                            <h3>{{ .Title }}</h3>
+                        </div>
+                    </a>
+                </div>
+                {{ end }}
+            </div>
+        </section>
+    </div>
+</div>
+
+{{ end }}

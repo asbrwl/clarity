@@ -1,0 +1,30 @@
+<div class="container mobile-padding">
+    <div class="flex home-header hero-section">
+        <div class="flex-two-thirds header-info">
+            <h1 class="home-page-heading hero-title">
+                <span class="hero-highlight"
+                    >{{ .Site.Params.description }}
+                </span>
+            </h1>
+            {{ with .Site.Params.hero_introduction }}
+            <p class="hero-introduction">
+                {{ . }}
+            </p>
+            {{ end }}
+            <div class="hero-read-more">
+                <a href="/about/" class="read-more-link">Read more</a>
+            </div>
+        </div>
+
+        {{ with .Site.Params.hero_image }}
+        <div class="hero-image-container">
+            <img
+                src="{{ . }}"
+                alt="{{ $.Site.Params.author }}"
+                title="{{ $.Site.Params.author }}"
+                class="hero-image"
+            />
+        </div>
+        {{ end }}
+    </div>
+</div>

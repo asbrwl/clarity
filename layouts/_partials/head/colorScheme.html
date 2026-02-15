@@ -1,0 +1,8 @@
+<script>
+    (function() {
+        const storedTheme = localStorage.getItem('theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = storedTheme || (systemDark ? 'dark' : 'light');
+        document.documentElement.className = theme;
+    })();
+</script>

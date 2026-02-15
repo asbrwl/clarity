@@ -1,0 +1,17 @@
+name = "Clarity"
+license = "MIT"
+licenselink = "https://github.com/asbrwl/clarity/blob/main/LICENSE"
+description = "A simple clean theme focusing on clarity and legibility"
+homepage = "https://github.com/asbrwl/clarity"
+version = "0.1.0"
+tags = [
+    "blog",
+    "responsive",
+    "light",
+    "dark"
+    ]
+min_version = "0.74.0"
+
+[author]
+    name = "Akhilesh Sabharwal"
+    homepage = "https://github.com/asbrwl"

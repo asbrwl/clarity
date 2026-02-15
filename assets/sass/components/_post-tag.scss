@@ -1,0 +1,25 @@
+.new-post,
+.popular-post {
+    display: inline-block;
+    color: var(--heading-color);
+    padding: 0.3rem 0.4rem;
+    border-radius: 0.3rem;
+    font-size: 0.85rem;
+    margin-left: 1rem;
+}
+
+.new-post {
+    background: var(--light-background);
+}
+
+.popular-post {
+    background: var(--accent-background);
+}
+
+@media screen and (min-width: $breakpoint-mobile) {
+
+    .new-post,
+    .popular-post {
+        margin-bottom: 0;
+    }
+}

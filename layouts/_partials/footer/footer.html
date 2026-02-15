@@ -1,0 +1,54 @@
+<footer class="footer">
+    <div class="container">
+        <hr />
+        <div class="flex">
+            <div class="flex">
+                <span class="footer-links flex-two-thirds">
+                    {{ range .Site.Menus.footer }}
+                    <a
+                        href="{{ .URL }}"
+                        class="umami--click--footer_{{.Name | urlize}}"
+                        >{{ .Name }}</a
+                    >
+                    {{ end }}
+                </span>
+            </div>
+            <div class="flex">
+                <span class="footer-color-changer flex-col">
+                    <button
+                        type="button"
+                        class="theme-button light"
+                        onclick="setTheme('light')"
+                        aria-label="Switch to light mode"
+                        title="Switch to light mode"
+                    >
+                        <img
+                            src="/img/theme-dark-light-icon.svg"
+                            alt=""
+                            aria-hidden="true"
+                        />
+                    </button>
+                    <button
+                        type="button"
+                        class="theme-button dark"
+                        onclick="setTheme('dark')"
+                        aria-label="Switch to dark mode"
+                        title="Switch to dark mode"
+                    >
+                        <img
+                            src="/img/theme-light-dark-icon.svg"
+                            alt=""
+                            aria-hidden="true"
+                        />
+                    </button>
+                </span>
+            </div>
+        </div>
+
+        <div class="footer-copy">
+            &copy; {{ now.Format "2006"}} {{ .Site.Copyright }}. All Rights
+            Reserved.
+            <br />
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,76 @@
+{{ define "main" }}
+
+<div class="container">
+    <article>
+        {{ with .Params.featured_image }}
+        <div class="article-featured-image">
+            <img src="{{ . }}" alt="{{ with $.Params.featured_image_desc }}{{ . }}{{ else }}{{ $.Title }}{{ end }}">
+        </div>
+        {{ end }}
+
+        <header class="article-header">
+            <div class="thumb">
+                <div>
+                    <h1>
+                        {{ .Title }}
+                    </h1>
+                    <p class="subtitle">
+
+                        {{ .Params.subtitle }}
+                    </p>
+                    <div class="post-meta">
+                        <div>
+                            By {{ .Site.Params.me }} on <time>{{ .Date.Format "January 02, 2006" }}</time> | Reading
+                            time: {{ .ReadingTime }} min
+                        </div>
+                        <div class="tags">
+                            {{ range sort (.GetTerms "tags") "LinkTitle" }}
+                            <a href="{{ .RelPermalink }}">{{ lower .LinkTitle }}</a>
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="article-post">
+            {{ if (or .Params.episodeaudio .Params.audio) }}
+            <p class="podcast-intro">{{ or .Params.episodesummary .Params.description }}</p>
+            {{ partial "audio.html" . }}
+            {{ end }}
+            {{ if and (gt .WordCount 400 ) (.Params.toc) }}
+            <details class="toc-accordion">
+                <summary class="toc-toggle">Table of Contents</summary>
+                <div class="toc-content">
+                    {{.TableOfContents}}
+                </div>
+            </details>
+            {{ end }}
+            {{ .Content }}
+            {{ if (.Params.featured_image_desc) }}
+            <p>Featured Image: {{ .Params.featured_image_desc | safeHTML }}</p>
+            {{ end}}
+        </div>
+</div>
+</article>
+<div class="container">
+    {{ if .Section }}
+    <nav class="flex container suggested">
+        {{ with .PrevInSection }}
+        <a rel="prev" href="{{ .RelPermalink }}" title="Previous post (older)">
+            <span>Previous</span>
+            {{ .Title }}
+        </a>
+        {{ end }}
+
+        {{ with .NextInSection }}
+        <a rel="next" href="{{ .RelPermalink }}" title="Next post (newer)">
+            <span>Next</span>
+            {{ .Title }}
+        </a>
+        {{ end }}
+    </nav>
+    {{ end }}
+</div>
+</main>
+
+{{ end }}

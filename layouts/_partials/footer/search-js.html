@@ -1,0 +1,20 @@
+<!-- Search Libraries (only loaded on search page) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/7.1.0/fuse.min.js"
+    integrity="sha512-H1bWCnc4dDJwdioqpOCkU76ZxEdvBvOy9R9Dd9EqftlzQg92owjX5IVdiOw00llAyQFUZJNPrzDnWZ/lZtf25A=="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js"
+    integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww=="
+    crossorigin="anonymous"></script>
+
+{{ $js := resources.Get "js/search.js" | resources.Minify |
+resources.Fingerprint "sha512" }}
+<link rel="preload" href="{{ $js.Permalink }}" as="script" />
+{{ if hugo.IsProduction }}
+<script
+    type="text/javascript"
+    src="{{ $js.Permalink }}"
+    integrity="{{ $js.Data.Integrity }}"
+></script>
+{{ else }}
+<script type="text/javascript" src="{{ $js.Permalink }}"></script>
+{{ end }}
