@@ -177,6 +177,8 @@ blockquote {
     font-style: italic;
     font-family: var(--base-font-family);
     color: var(--heading-color);
+    border-top: 1px solid var(--blockquote-left);
+    border-bottom: 1px solid var(--blockquote-left);
 
     &::before {
         content: "";
